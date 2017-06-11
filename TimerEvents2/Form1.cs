@@ -16,5 +16,21 @@ namespace TimerEvents2
         {
             InitializeComponent();
         }
+
+        System.Windows.Forms.Timer t;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            t = new System.Windows.Forms.Timer();
+            t.Interval = 1000;
+            t.Tick += new EventHandler(t_Tick);
+            t.Start();
+        }
+
+        private void t_Tick(object sender, EventArgs e)
+        {
+            progressBar1.Value += 10;
+            if (progressBar1.Value >= 100) t.Stop();
+        }
     }
 }
